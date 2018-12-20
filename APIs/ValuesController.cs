@@ -4,22 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace APIs
 {
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
-        // GET api/values 
-        public IEnumerable<string> Get()
+        // GET api/values
+        //[EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
+
+        // GET api/getproducts
+        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+        public ProductResult GetProducts()
         {
-            return new string[] { "value1", "value2" };
+            ProductResult result = new ProductResult();
+            ProductManage manage = new ProductManage();
+
+            List<Product> resultList = manage.ProductList();
+            result.ResultList = resultList;
+            result.ReturnCode = "0000";
+            result.ReturnMsg = "Return Message";
+
+            return result;
         }
 
         // GET api/values/5 
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/values 
         public void Post([FromBody]string value)
