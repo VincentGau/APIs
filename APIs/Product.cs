@@ -12,8 +12,10 @@ namespace APIs
         {
             Id = id;
             Name = name;
+            Remark = "test";
         }
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Remark { get; set; }
     }
 }

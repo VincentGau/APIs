@@ -15,6 +15,7 @@ namespace APIs
         }
         public string ReturnMsg { get; set; }
         public string ReturnCode { get; set; }
+        public int total { get; set; }
         public Object ResultList { get; set; }
     }
 }

@@ -8,12 +8,26 @@ namespace APIs
 {
     public class ProductManage
     {
+        private static List<Product> allProducts = new List<Product>();
+        private void Init()
+        {
+            for (int i = 1; i < 123; i++)
+            {
+                allProducts.Add(new Product(i, string.Format("name-{0}", i)));
+            }
+        }
+
         public List<Product> ProductList()
         {
-            List<Product> l = new List<Product>();
-            l.Add(new Product(1, "lala"));
-            l.Add(new Product(2, "haha"));
-            return l;
+            Init();
+            return allProducts;
+        }
+
+        internal List<Product> ProductListPage(int pageIndex, int pageSize)
+        {
+            Init();
+            List<Product> result = allProducts.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            return result;
         }
     }
 }

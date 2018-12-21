@@ -8,7 +8,7 @@ using System.Web.Http.Cors;
 
 namespace APIs
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -19,7 +19,7 @@ namespace APIs
         //}
 
         // GET api/getproducts
-        [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public ProductResult GetProducts()
         {
             ProductResult result = new ProductResult();
@@ -29,6 +29,27 @@ namespace APIs
             result.ResultList = resultList;
             result.ReturnCode = "0000";
             result.ReturnMsg = "Return Message";
+            result.total = resultList.Count();
+
+            return result;
+        }
+
+        public ProductResult GetProductsPage(string page, string pagesize)
+        {
+            ProductResult result = new ProductResult();
+            ProductManage manage = new ProductManage();
+
+            int pageIndex, pageSize;
+            
+            pageIndex = Convert.ToInt32(page);
+            pageSize = Convert.ToInt32(pagesize);
+            
+
+            List<Product> resultList = manage.ProductListPage(pageIndex, pageSize);
+            result.ResultList = resultList;
+            result.ReturnCode = "0000";
+            result.ReturnMsg = "Return Message";
+            result.total = 100;
 
             return result;
         }
