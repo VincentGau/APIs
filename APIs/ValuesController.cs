@@ -29,7 +29,7 @@ namespace APIs
             result.ResultList = resultList;
             result.ReturnCode = "0000";
             result.ReturnMsg = "Return Message";
-            result.total = resultList.Count();
+            result.RecordCount = manage.RecordCount;
 
             return result;
         }
@@ -49,7 +49,7 @@ namespace APIs
             result.ResultList = resultList;
             result.ReturnCode = "0000";
             result.ReturnMsg = "Return Message";
-            result.total = 100;
+            result.RecordCount = manage.RecordCount;
 
             return result;
         }

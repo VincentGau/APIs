@@ -8,13 +8,13 @@ namespace APIs
 {
     public class Product
     {
-        public Product(int id, string name)
+        public Product(string id, string name, string remark = "test")
         {
             Id = id;
             Name = name;
-            Remark = "test";
+            Remark = remark;
         }
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Remark { get; set; }
     }
