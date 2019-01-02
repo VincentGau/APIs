@@ -76,11 +76,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\ProductDAO.cs" />
+    <Compile Include="DataAccess\PVDAO.cs" />
     <Compile Include="Logic\ProductManage.cs" />
+    <Compile Include="Logic\PVManage.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\PV.cs" />
+    <Compile Include="Model\ResResult.cs" />
+    <Compile Include="ProductsController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\ProductResult.cs" />
+    <Compile Include="PVController.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ValuesController.cs" />
   </ItemGroup>
