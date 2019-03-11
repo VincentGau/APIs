@@ -10,13 +10,18 @@ using System.Web.Http.Cors;
 
 namespace APIs
 {
-    [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
+    //[EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<object> Get()
         {
-            return new string[] { "value1", "value2" };
+            var resultList = new List<object>();
+            resultList.Add(new { name = "abc", value = "cba" });
+            resultList.Add(new { name = "xyz", value = "zyx" });
+            return resultList;
+
+            
         }
 
         // GET api/values/5 

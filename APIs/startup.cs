@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Owin;
 using System.Web.Http;
+using WebApiContrib.Formatting.Jsonp;
 
 namespace APIs
 {
@@ -17,13 +18,15 @@ namespace APIs
             // Configure Web API for self-host. 
             HttpConfiguration config = new HttpConfiguration();
 
-            config.EnableCors();
+            //config.EnableCors();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-                      
+
+            var jsonpFormatter = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            config.Formatters.Insert(0, jsonpFormatter); // inject the new formatter into the collection of formatters as the first formatter
 
             appBuilder.UseWebApi(config);
         }
